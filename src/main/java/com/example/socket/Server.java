@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 public class Server {
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8080);
-        System.out.println("server started");
 
-        try{
+
+        try{     ServerSocket serverSocket = new ServerSocket(8080);
+                 System.out.println("server started");
 
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("client connected " + clientSocket.getRemoteSocketAddress());
@@ -32,11 +32,11 @@ public class Server {
                 }if("end".equals(msg)) {
                     break;
                 }
-
+                    serverSocket.close();
             }
         }catch (IOException ex){
             ex.printStackTrace();
-            serverSocket.close();
+
         }
     }
 }
